@@ -1,6 +1,9 @@
 import java.util.List;
+import java.util.Set;
 
+import controllers.LibroController;
 import models.Book;
+import validaciones.ValidacionesLibro;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -31,5 +34,11 @@ public class App {
                 new Book("Ciberseguridad", "Pedro León", 2023),
                 new Book("Blockchain", "Marta Ríos", 2021),
                 new Book("Machine Learning", "Cristina Gómez", 2022));
+
+        Set<Book> resultado = LibroController.procesarLibros(libros);
+        ValidacionesLibro.validarResultadoTreeSet(resultado);
+
+        System.out.println("Libros procesados (ordenados y sin duplicados):");
+        resultado.forEach(System.out::println);
     }
 }
